@@ -19,7 +19,8 @@ The code consist of 6 parts, and we have done the first three parts, including b
     We provide the manually corrected pest population data.<br />
     The files are in "pest population data.zip". 
     Those csv files are name by "PestName + County Name + Town Name + .csv "
-    
+
+Download all the above files to a folder, and create another folder named "data" inside it.
     
 The last 3 parts include the following parts:
   1. Climatological_Ddata_Update.py <br />
@@ -32,5 +33,7 @@ The last 3 parts include the following parts:
   3. upload html files to FTP <br />
     We upload the html files to FTP in this procedure<br />
     name:TO_FTP.py
+
+Download all the above files to a folder, the path name may need to be changed
 
 
