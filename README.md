@@ -22,13 +22,15 @@ The code consist of 6 parts, and we have done the first three parts, including b
     
     
 The last 3 parts include the following parts:
-  1. climatological data Update <br />
+  1. Climatological_Ddata_Update.py <br />
     We crawl data from CWB Observation Data Inquire System (http://e-service.cwb.gov.tw/HistoryDataQuery/index.jsp) <br />
   2. raw data process + ML&Prediction + writing html pages <br />
     We change the raw html data in a form that we can easily perform machine learning.<br />
     Then perform Prediction with the lastest 10 days climatological data<br />
+    name: CORE.py
     Since we did not establish a database as well as use dJANGO, we have the program automatically output an html file 
   3. upload html files to FTP <br />
     We upload the html files to FTP in this procedure<br />
+    name:TO_FTP.py
 
 
