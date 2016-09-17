@@ -18,18 +18,11 @@ import random
 # In[2]:
 
 def read_station_data():
-    with open('.\\data\\地區資訊new.csv', 'r') as f: 
+    with open('.\\data\\Meteorological_stations_table.csv', 'r') as f: 
         reader = csv.reader(f)
         station_data = list(list(rec) for rec in csv.reader(f, delimiter=',')) #reads csv into a list of lists
         f.close()
     return station_data
-
-def read_pest_data(pest):
-    with open('.\\data\\蔬果重要害蟲防疫旬報_'+pest+'_new.csv','r') as f:
-        reader = csv.reader(f)
-        pest_data = list(list(rec) for rec in csv.reader(f, delimiter=','))
-        f.close()
-    return pest_data
 
 
 # In[3]:
