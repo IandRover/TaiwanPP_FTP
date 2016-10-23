@@ -259,10 +259,10 @@ def predict_X(row_sd):
     if int(todate_day) > 20:
         sub_buffer, need_to_continue =write_day10(row_sd)
 
-    if int(todate_day) < 20 and int(todate_month) != 1:
+    if int(todate_day) <= 20 and int(todate_month) != 1:
         sub_buffer, need_to_continue =write_gap_month(row_sd)
 
-    if int(todate_day) < 20 and int(todate_month) == 1:
+    if int(todate_day) <= 20 and int(todate_month) == 1:
         sub_buffer, need_to_continue =write_gap_year(row_sd)
     #print(sub_buffer)
     buffera = []
@@ -676,7 +676,7 @@ def create_html(pest_name, DF):
     <link rel="stylesheet" type="text/css" href="others.css" />
 </head>
 <body>
-<h2 class="col-12" align=center>台灣蔬果農業害蟲預測</h2>
+<h2 class="col-12" align=center>台灣蔬果農業害蟲預測 Taiwan Pest Forecasting Website</h2>
     
     <div class="col-3 k " width="9">
         <img class="map" id="taiwan_map" src="happytaiwan.png" alt="台灣地圖" data-image-width="573">
@@ -686,23 +686,23 @@ def create_html(pest_name, DF):
     
 		<table id="table1" border=1 align = center>
 			<tr>
-				<th colspan="8">害蟲名稱</th>
+				<th colspan="8">害蟲名稱 pest name </th>
 			</tr>
 			<tr>
-				<th colspan="8">縣市鄉鎮名稱</th>
+				<th colspan="8">縣市鄉鎮名稱 city name</th>
 			</tr>
 			<tr>
-				<td>預測天數</td>
-				<td>一天後</td>
-				<td>兩天後</td>
-				<td>三天後</td>
-                <td>四天後</td>
-				<td>五天後</td>
-				<td>六天後</td>
-                <td>七天後</td>
+				<td>預測天數{days after}</td>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+                <td>4</td>
+				<td>5</td>
+				<td>6</td>
+                <td>7</td>
 			</tr>
 			<tr>
-				<td>預測規模</td>
+				<td>預測規模(group size)</td>
 				<td>0</td>
 				<td>0</td>
 				<td>0</td>
@@ -712,7 +712,7 @@ def create_html(pest_name, DF):
                 <td>0</td>
 			</tr>
 			<tr>
-				<td>預測率</td>
+				<td>預測率(accuracy)</td>
 				<td>0</td>
 				<td>0</td>
 				<td>0</td>
@@ -722,7 +722,7 @@ def create_html(pest_name, DF):
 				<td>0</td>
 			</tr>
             <tr>
-				<td>第二可能規模</td>
+				<td>第二可能規模(2nd group size)</td>
 				<td>0</td>
 				<td>0</td>
 				<td>0</td>
@@ -732,7 +732,7 @@ def create_html(pest_name, DF):
 				<td>0</td>
 			</tr>
             <tr>
-				<td>預測率</td>
+				<td>預測率(accuracy)</td>
 				<td>0</td>
 				<td>0</td>
 				<td>0</td>
@@ -756,13 +756,13 @@ def create_html(pest_name, DF):
 							}
 						}
 						var my_table = "<div id='tablePrint'>";
-							var my_table = "<table><tr><th colspan='8'>""" + pest_name + """</th></tr>";
+							var my_table = "<table><tr><th colspan='8'>""" + pest_name + pest_name_eng+"""</th></tr>";
 							my_table += "<tr><th colspan='8'>"+sub_table[0][1]+"</th></tr>";
-							my_table += "<tr><td>預測天數</td><td>一天後</td><td>兩天後</td><td>三天後</td><td>四天後</td><td>五天後</td><td>六天後</td><td>七天後</td></tr>";
-							my_table += "<tr><td>預測規模</td><td>"+sub_table[0][3]+"</td><td>"+sub_table[1][3]+"</td><td>"+sub_table[2][3]+"</td><td>"+sub_table[3][3]+"</td><td>"+sub_table[4][3]+"</td><td>"+sub_table[5][3]+"</td><td>"+sub_table[6][3]+"</td></tr>";
-							my_table += "<tr><td>預測率</td><td>"+sub_table[0][4]+"</td><td>"+sub_table[1][4]+"</td><td>"+sub_table[2][4]+"</td><td>"+sub_table[3][4]+"</td><td>"+sub_table[4][4]+"</td><td>"+sub_table[5][4]+"</td><td>"+sub_table[6][4]+"</td></tr>";
-                            my_table += "<tr><td>第二可能規模</td><td>"+sub_table[0][5]+"</td><td>"+sub_table[1][5]+"</td><td>"+sub_table[2][5]+"</td><td>"+sub_table[3][5]+"</td><td>"+sub_table[4][5]+"</td><td>"+sub_table[5][5]+"</td><td>"+sub_table[6][5]+"</td></tr>";
-                            my_table += "<tr><td>預測率</td><td>"+sub_table[0][6]+"</td><td>"+sub_table[1][6]+"</td><td>"+sub_table[2][6]+"</td><td>"+sub_table[3][6]+"</td><td>"+sub_table[4][6]+"</td><td>"+sub_table[5][6]+"</td><td>"+sub_table[6][6]+"</td></tr></table>";
+							my_table += "<tr><td>預測天數(days after)</td><td>1天</td><td>2天</td><td>3天</td><td>4天</td><td>5天</td><td>6天</td><td>7天</td></tr>";
+							my_table += "<tr><td>預測規模(magnitude)</td><td>"+sub_table[0][3]+"</td><td>"+sub_table[1][3]+"</td><td>"+sub_table[2][3]+"</td><td>"+sub_table[3][3]+"</td><td>"+sub_table[4][3]+"</td><td>"+sub_table[5][3]+"</td><td>"+sub_table[6][3]+"</td></tr>";
+							my_table += "<tr><td>預測率(accuracy)</td><td>"+sub_table[0][4]+"</td><td>"+sub_table[1][4]+"</td><td>"+sub_table[2][4]+"</td><td>"+sub_table[3][4]+"</td><td>"+sub_table[4][4]+"</td><td>"+sub_table[5][4]+"</td><td>"+sub_table[6][4]+"</td></tr>";
+                            my_table += "<tr><td>第二可能規模(magnitude)</td><td>"+sub_table[0][5]+"</td><td>"+sub_table[1][5]+"</td><td>"+sub_table[2][5]+"</td><td>"+sub_table[3][5]+"</td><td>"+sub_table[4][5]+"</td><td>"+sub_table[5][5]+"</td><td>"+sub_table[6][5]+"</td></tr>";
+                            my_table += "<tr><td>預測率(accuracy)</td><td>"+sub_table[0][6]+"</td><td>"+sub_table[1][6]+"</td><td>"+sub_table[2][6]+"</td><td>"+sub_table[3][6]+"</td><td>"+sub_table[4][6]+"</td><td>"+sub_table[5][6]+"</td><td>"+sub_table[6][6]+"</td></tr></table>";
 
 							document.getElementById('table1').innerHTML = my_table;
 						})
@@ -772,7 +772,7 @@ def create_html(pest_name, DF):
     <div id="footer">NCTU, NYMU 2016 iGEM collaboration</div>
     <div id="footer">UPDATE:""" + str(datetime.datetime.now()) + """</div>
     <div class="sub">
-        請點選位置圖示來獲得最新資料
+        請點選位置圖示來獲得最新資料 Click the icon to get the latest information
     </div>
 </body>
 </html>"""
@@ -903,7 +903,7 @@ station_data = read_station_data()
 station_data = station_data[1:]
 count_sd = 0
 
-for i, pest_name in enumerate(['東方果實蠅','瓜實蠅','甜菜夜蛾','斜紋夜蛾']):
+for i, pest_name in enumerate(['東方果實蠅','瓜實蠅','斜紋夜蛾','甜菜夜蛾']):
 
     column = ['病蟲害','縣市名稱','時間','規模','準確率','第二規模','第二準確率']
     DF = pd.DataFrame(columns=column)
